@@ -5,6 +5,8 @@ import com.ecommerceprojectbyrahul.productservice.models.Product;
 import com.ecommerceprojectbyrahul.productservice.service.Productservice;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/products")
 public class ProductController {
@@ -19,9 +21,14 @@ public class ProductController {
 
     @GetMapping("/{id}")
     public @ResponseBody GetProductByDto getProductById(
-            @PathVariable("id") Long id){
+            @PathVariable("id") Long id) throws Exception {
         return productservice.getProductById(id);
 
+    }
+
+    @GetMapping("")
+    public @ResponseBody List<GetProductByDto> getAllProducts(){
+        return productservice.getAllProducts();
     }
 
 //    @RequestBody Product product  ---> Converts the received json into product java object
