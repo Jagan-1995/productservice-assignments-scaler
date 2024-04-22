@@ -10,13 +10,16 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
 
 
-    Optional<User> findById(Long aLong);
-
-    Optional<User> findByName(String name);
+//    Optional<User> findById(Long aLong);
 
 
-    List<User> findAllByNameEndingWith(String suffix);
+//    Optional<User> findById(Long aLong);
+
+    List<User> findByName(String name);
 
 
-    User save(User entity);
+//    List<User> findAllByNameEndingWith(String suffix);
+
+
+//    User save(User entity);
 }
