@@ -1,9 +1,14 @@
 package com.ecommerceprojectbyrahul.productservice.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 public class Batch {
 
@@ -14,6 +19,6 @@ public class Batch {
 
     private Integer strength;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Instructor instructor;
 }

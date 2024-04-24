@@ -17,6 +17,6 @@ public class Instructor extends User{
 
     private Double salary;
     private String skill;
-    @OneToMany(mappedBy = "instructor", cascade = CascadeType.REMOVE)
+    @OneToMany(fetch = jakarta.persistence.FetchType.EAGER, mappedBy = "instructor", cascade = CascadeType.REMOVE)
     private List<Batch> batch;
 }
