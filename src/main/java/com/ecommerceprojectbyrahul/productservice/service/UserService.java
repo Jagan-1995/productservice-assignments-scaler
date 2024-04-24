@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class UserService {
@@ -49,6 +51,24 @@ public class UserService {
         return userRepository.findByName(name);
     }
 
+    public List<GetInstructorDto> getInstructorByIds(List<UUID> uuid){
+        List<Instructor> instructors = instructorRepository.findAllById(uuid);
+
+        List<GetInstructorDto> instructorDtos = new ArrayList<>();
+        for(Instructor instructor: instructors){
+            GetInstructorDto getInstructorDto = new GetInstructorDto();
+            getInstructorDto.setId(instructor.getId());
+            getInstructorDto.setName(instructor.getName());
+            getInstructorDto.setEmail(instructor.getEmail());
+
+            instructorDtos.add(getInstructorDto);
+
+        }
+
+        return instructorDtos;
+
+    }
+
     public List<GetInstructorDto> getInstructorByName(String name) {
 
         List<Instructor> instructors = instructorRepository.findByName(name);
@@ -64,16 +84,16 @@ public class UserService {
             getInstructorDto.setName(instructor.getName());
             getInstructorDto.setEmail(instructor.getEmail());
 
-            List<String> batchNames = new ArrayList<>();
-            List<Long> ids = new ArrayList<>();
-            for(Batch batch : instructor.getBatch()){
-
-                batchNames.add(batch.getName());
-                ids.add(batch.getId());
-            }
-
-            getInstructorDto.setBatchName(batchNames);
-            getInstructorDto.setBatchId(ids);
+//            List<String> batchNames = new ArrayList<>();
+//            List<Long> ids = new ArrayList<>();
+//            for(Batch batch : instructor.getBatch()){
+//
+//                batchNames.add(batch.getName());
+//                ids.add(batch.getId());
+//            }
+//
+//            getInstructorDto.setBatchName(batchNames);
+//            getInstructorDto.setBatchId(ids);
 
             instructorDtos.add(getInstructorDto);
 

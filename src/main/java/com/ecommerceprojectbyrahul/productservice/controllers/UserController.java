@@ -10,6 +10,7 @@ import lombok.Getter;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/users")
@@ -43,6 +44,11 @@ public class UserController {
     @GetMapping("/instructor/{name}")
     public List<GetInstructorDto> getInstructorByName(@PathVariable(name = "name") String name){
         return userService.getInstructorByName(name);
+    }
+
+    @GetMapping("/instructor")
+    public List<GetInstructorDto> getInstructorByUUID(@RequestBody List<UUID> uuid){
+        return userService.getInstructorByIds(uuid);
     }
 
 

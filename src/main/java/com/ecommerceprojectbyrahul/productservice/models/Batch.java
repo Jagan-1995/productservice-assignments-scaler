@@ -19,6 +19,6 @@ public class Batch {
 
     private Integer strength;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private Instructor instructor;
 }
